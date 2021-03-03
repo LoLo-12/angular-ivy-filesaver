@@ -46,6 +46,7 @@ export class AppComponent {
       bookType: "xlsx",
       type: "array"
     });
+    console.log(excelBuffer);
     const data: Blob = new Blob([excelBuffer], {
       type:
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8"
