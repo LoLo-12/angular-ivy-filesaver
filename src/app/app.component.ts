@@ -34,19 +34,15 @@ export class AppComponent {
   }
 
   private exportAsExcel(json, fileName) {
-    console.log(json);
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    console.log(worksheet);
     const workbook: XLSX.WorkBook = {
       Sheets: { data: worksheet },
       SheetNames: ["data"]
     };
-    console.log(workbook);
     const excelBuffer = XLSX.write(workbook, {
       bookType: "xlsx",
       type: "array"
     });
-    console.log(excelBuffer);
     const data: Blob = new Blob([excelBuffer], {
       type:
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8"
