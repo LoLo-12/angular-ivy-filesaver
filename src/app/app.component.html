@@ -1,27 +1,24 @@
 <p>FileSaver</p>
 
 <br>
-name: <input type="text" [(ngModel)]="user_name">
+name: <input type="text" [(ngModel)]="userName">
 <br>
 sex:
-<select name="" id="" [(ngModel)]="user_sex">
+<select name="" id="" [(ngModel)]="userSex">
   <option value="girl">girl</option>
   <option value="boy">boy</option>
 </select>
 <br>
-id: <input type="number" [(ngModel)]="user_id">
 <button (click)="addRow()">add</button>
 
 <table>
 	<tr>
 		<th>name</th>
 		<th>sex</th>
-		<th>id</th>
 	</tr>
 	<tr *ngFor="let item of form">
 		<td>{{item.name}}</td>
 		<td>{{item.sex}}</td>
-		<th>{{item.id}}</th>
 	</tr>
 </table>
 <button (click)="downloadFile()">download</button>
