@@ -32,6 +32,7 @@ export class AppComponent {
     return year + month + date;
   }
 
+  // https://docs.sheetjs.com/#sheetjs-js-xlsx
   public downloadFile() {
     this.exportAsExcel(this.form, this.getToday());
     // this.exportAsText(JSON.stringify(this.form), this.getToday());
