@@ -24,13 +24,17 @@ export class AppComponent {
     });
   }
 
-  public downloadFile() {
+  private getToday() {
     const day = new Date();
     const year = day.getFullYear().toString();
     const month = (day.getMonth() + 1).toString();
     const date = day.getDate().toString();
-    this.exportAsExcel(this.form, year + month + date);
-    // this.exportAsText(JSON.stringify(this.form), year + month + date);
+    return year + month + date;
+  }
+
+  public downloadFile() {
+    this.exportAsExcel(this.form, this.getToday());
+    // this.exportAsText(JSON.stringify(this.form), this.getToday());
   }
 
   private exportAsExcel(json, fileName) {
@@ -40,14 +44,14 @@ export class AppComponent {
       SheetNames: ["data"]
     };
     const excelBuffer = XLSX.write(workbook, {
-      bookType: "xlsx",
+      bookType: "xls",
       type: "array"
     });
     const data: Blob = new Blob([excelBuffer], {
       type:
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8"
     });
-    FileSaver.saveAs(data, fileName + ".xlsx");
+    FileSaver.saveAs(data, fileName + ".xls");
   }
 
   // download .txt
